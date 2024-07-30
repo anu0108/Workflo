@@ -12,6 +12,7 @@ import Automation from "../../../public/images/automation.svg";
 import Filter from "../../../public/images/filter.svg";
 import Share from "../../../public/images/share.svg";
 import Task from "../../../public/images/task.svg";
+import addNew from "../../../public/images/add-new.svg";
 import { useEffect, useState } from "react";
 import {
   DragDropContext,
@@ -24,6 +25,7 @@ import { ClipLoader } from "react-spinners";
 import Card from "@/components/Card";
 import axios from "axios";
 import Sidebar from "@/components/Sidebar";
+import TaskModal from "@/components/TaskModal";
 const barlow = Barlow({ subsets: ["latin"], weight: "600" });
 const inter = Inter({ subsets: ["latin"], weight: "400" });
 
@@ -54,6 +56,7 @@ export default function Dashboard() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [orderChanged, setOrderChanged] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [taskPopup, setTaskPopup] = useState(false);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -67,20 +70,6 @@ export default function Dashboard() {
 
     fetchCards();
   }, [orderChanged]);
-
-  // const onDragEnd = (result: DropResult) => {
-  //   if (!result.destination) return;
-
-  //   const updatedTasks = [...tasks];
-  //   const [reorderedTask] = updatedTasks.splice(result.source.index, 1);
-  //   reorderedTask.status = result.destination.droppableId;
-  //   reorderedTask.order = result.destination.index;
-  //   updatedTasks.splice(result.destination.index, 0, reorderedTask);
-
-  //   console.log(reorderedTask)
-
-  //   setTasks(updatedTasks);
-  // };
 
   const onDragEnd = async (result: DropResult) => {
     if (!result.destination) return;
@@ -171,7 +160,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex h-screen w-screen">
-      <Sidebar />
+      <Sidebar setTaskPopup={setTaskPopup} />
       <div className="bg-[#F7F7F7] w-full p-4">
         <div className="flex justify-between">
           <p
@@ -305,12 +294,22 @@ export default function Dashboard() {
                       </div>
                     )}
                   </Droppable>
+
+                  <div
+                    className="bg-gradient-to-b from-[#3A3A3A] to-[#202020] p-2 rounded-lg flex justify-between cursor-pointer"
+                    onClick={() => setTaskPopup(true)}
+                  >
+                    <p className="text-[#E3E1E1]">Add New</p>
+                    <Image src={addNew} alt="" />
+                  </div>
                 </div>
               ))
             )}
           </div>
         </DragDropContext>
       </div>
+
+      {taskPopup && <TaskModal onClose={() => setTaskPopup(false)} />}
     </div>
   );
 }

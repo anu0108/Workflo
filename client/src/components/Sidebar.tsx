@@ -11,11 +11,15 @@ import Analytics from "../../public/images/analytics.svg";
 import Add from "../../public/images/add.svg";
 import Download from "../../public/images/download.svg";
 import { useState } from "react";
-export default function Sidebar() {
+export default function Sidebar({setTaskPopup}:any) {
   const [selected, setSelected] = useState("home");
   const handleSelect = (item: any) => {
     setSelected(item);
   };
+
+  const handlePopupOpen = () => {
+    setTaskPopup(true);
+  }
 
   return (
     <div className="w-80 bg-[#FFFFFF] p-4 flex flex-col justify-between">
@@ -109,10 +113,10 @@ export default function Sidebar() {
             <p className="text-[#797979]">Analytics</p>
           </div>
         </div>
-        <div className="mt-4 cursor-pointer p-4 rounded-lg flex items-center justify-center gap-3 bg-gradient-to-b from-[#4C38C2] to-[#2F2188]">
+        <button className="mt-4 cursor-pointer p-4 rounded-lg flex items-center justify-center gap-3 bg-gradient-to-b from-[#4C38C2] to-[#2F2188]" onClick={handlePopupOpen}>
           <p className="text-[#FFFFFF]">Create new task</p>
           <Image src={Add} alt="" />
-        </div>
+        </button>
       </div>
 
       <div className="bg-[#F3F3F3] flex items-center p-2 rounded-lg cursor-pointer">
