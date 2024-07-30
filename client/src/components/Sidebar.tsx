@@ -1,5 +1,5 @@
 import Image from "next/image";
-import DP from "../../public/images/dp.svg";
+import DP from "../../public/images/dp.webp";
 import Bell from "../../public/images/bell.svg";
 import Sun from "../../public/images/sun.svg";
 import Arrow from "../../public/images/chevron.svg";
