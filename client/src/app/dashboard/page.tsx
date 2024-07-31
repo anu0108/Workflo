@@ -159,7 +159,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="flex h-screen w-screen">
+    <div className="flex h-screen">
       <Sidebar setTaskPopup={setTaskPopup} />
       <div className="bg-[#F7F7F7] w-full p-4">
         <div className="flex justify-between">
@@ -217,7 +217,7 @@ export default function Dashboard() {
               placeholder="Search"
               className="bg-[#FFFFFF] border border-[#E9E9E9] p-2 rounded-lg flex justify-between focus:border-[#999999] outline-none w-40"
             />
-            <Image src={Search} className="absolute top-3 left-24" alt="" />
+            <Image src={Search} className="absolute top-3 left-28" alt="" />
           </div>
 
           <div className="flex gap-4">
