@@ -1,4 +1,5 @@
 "use client";
+import { useCookies } from 'next-client-cookies';
 import { Barlow, Inter } from "next/font/google";
 import Image from "next/image";
 import Add from "../../../public/images/add.svg";
@@ -26,6 +27,7 @@ import Card from "@/components/Card";
 import axios from "axios";
 import Sidebar from "@/components/Sidebar";
 import TaskModal from "@/components/TaskModal";
+import { useRouter } from 'next/navigation';
 const barlow = Barlow({ subsets: ["latin"], weight: "600" });
 const inter = Inter({ subsets: ["latin"], weight: "400" });
 
@@ -51,12 +53,24 @@ const initialColumns: Column[] = [
   { id: "finished", title: "Finished" },
 ];
 
+
+
 export default function Dashboard() {
   const [columns, setColumns] = useState(initialColumns);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [orderChanged, setOrderChanged] = useState(false);
   const [loading, setLoading] = useState(false);
   const [taskPopup, setTaskPopup] = useState(false);
+  const cookies = useCookies();
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = cookies.get('token')
+    
+    if (!token) {
+      router.push('/login');
+    }
+  }, [cookies, router]);
 
   useEffect(() => {
     const fetchCards = async () => {

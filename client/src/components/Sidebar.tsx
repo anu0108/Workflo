@@ -11,11 +11,25 @@ import Analytics from "../../public/images/analytics.svg";
 import Add from "../../public/images/add.svg";
 import Download from "../../public/images/download.svg";
 import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from 'next/navigation'
+
 export default function Sidebar({setTaskPopup}:any) {
   const [selected, setSelected] = useState("home");
   const handleSelect = (item: any) => {
     setSelected(item);
   };
+  const router = useRouter();
+
+  const handleLogout = async() => {
+    await axios.post(
+      `${process.env.NEXT_PUBLIC_API_PORT}/logout`, {},
+      { withCredentials: true }
+    );
+    toast.success("User Logged out")
+    router.push("/")
+  }
 
   const handlePopupOpen = () => {
     setTaskPopup(true);
@@ -52,7 +66,7 @@ export default function Sidebar({setTaskPopup}:any) {
               className="cursor-pointer"
             />
           </div>
-          <button className="p-2 bg-[#F4F4F4] text-[#797979] rounded">
+          <button className="p-2 bg-[#F4F4F4] text-[#797979] rounded" onClick={handleLogout}>
             Logout
           </button>
         </div>

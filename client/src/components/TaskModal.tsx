@@ -43,33 +43,50 @@ export default function TaskModal({ onClose }: any) {
             className="text-2xl font-semibold mb-4 text-gray-600 placeholder-gray-400 focus:outline-none"
           />
 
-          <div className="flex justify-between mt-5 w-4/6">
+          <div className="flex justify-between mt-5 w-5/6">
             <div className="flex gap-2">
             <Image src={status} alt="" width={18} height={18} />
             <p className="text-[#666666] text-sm">Status</p>
             </div>
-            <p className="text-[#C1BDBD] text-sm">Not Selected</p>
+            <input
+            type="text"
+            placeholder="Not Selected"
+            className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
+          />
+            {/* <p className="text-[#C1BDBD] text-sm">Not Selected</p> */}
           </div>
-          <div className="flex justify-between mt-10 w-4/6">
+          <div className="flex justify-between mt-10 w-5/6">
             <div className="flex gap-2">
             <Image src={priority} alt="" width={18} height={18} />
             <p className="text-[#666666] text-sm">Priority</p>
             </div>
-            <p className="text-[#C1BDBD] text-sm">Not Selected</p>
+            <input
+            type="text"
+            placeholder="Not Selected"
+            className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
+          />
           </div>
-          <div className="flex justify-between  mt-10 w-4/6">
+          <div className="flex justify-between  mt-10 w-5/6">
             <div className="flex gap-2">
             <Image src={deadline} alt="" width={18} height={18} />
             <p className="text-[#666666] text-sm">Deadline</p>
             </div>
-            <p className="text-[#C1BDBD] text-sm">Not Selected</p>
+            <input
+            type="text"
+            placeholder="Not Selected"
+            className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
+          />
           </div>
-          <div className="flex justify-between  mt-10 w-4/6">
+          <div className="flex justify-between  mt-10 w-5/6">
             <div className="flex gap-2">
             <Image src={description} alt="" width={18} height={18} />
             <p className="text-[#666666] text-sm">Description</p>
             </div>
-            <p className="text-[#C1BDBD] text-sm">Not Selected</p>
+            <input
+            type="text"
+            placeholder="Not Selected"
+            className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
+          />
           </div>
           <div className="flex mt-10 gap-6 cursor-pointer">
             <Image src={add} alt=" "  width={18} height={18} />
