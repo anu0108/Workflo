@@ -218,36 +218,36 @@ export default function Dashboard() {
         </div>
 
         <div className="mt-4 flex justify-between">
-          <div className="relative">
+          <div className="relative pt-1">
             <input
               type="text"
               placeholder="Search"
-              className="bg-[#FFFFFF] border border-[#E9E9E9] p-2 rounded-lg flex justify-between focus:border-[#999999] text-sm xl:text-base outline-none w-36 xl:w-40"
+              className="bg-[#FFFFFF] border border-[#E9E9E9] p-1 md:p-2 rounded flex justify-between focus:border-[#999999] text-xs md:text-sm xl:text-base outline-none w-28 md:w-36 xl:w-40"
             />
-            <Image src={Search} className="absolute top-2 left-28 xl:left-32 w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" alt="" />
+            <Image src={Search} className="absolute top-[6px] left-24 md:top-3 lg:top-3 md:left-28 xl:left-32 w-3 h-4 md:w-4 md:h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" alt="" />
           </div>
 
-          <div className="flex gap-2 xl:gap-4 pt-0.5">
-            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer h-9 xl:h-full border border-[#E9E9E9]">
-              <p className="text-[#797979] text-sm xl:text-base">Calendar view</p>
-              <Image src={Calendar} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
+          <div className="flex gap-2 xl:gap-4 pt-1 md:pt-0.5">
+            <div className="bg-[#F4F4F4] p-1 md:p-2 rounded flex gap-2 cursor-pointer h-7 md:h-9 xl:h-full border border-[#E9E9E9]">
+              <p className="text-[#797979] text-xs md:text-sm xl:text-base">Calendar view</p>
+              <Image src={Calendar} alt="" className="w-4 h-4 md:mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
             </div>
-            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer h-9 xl:h-full border border-[#E9E9E9]">
-              <p className="text-[#797979] text-sm xl:text-base">Automation</p>
-              <Image src={Automation} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6"  />
+            <div className="bg-[#F4F4F4] p-1 md:p-2 rounded flex gap-2 cursor-pointer h-7 md:h-9 xl:h-full border border-[#E9E9E9]">
+              <p className="text-[#797979] text-xs md:text-sm xl:text-base">Automation</p>
+              <Image src={Automation} alt="" className="w-4 h-4 md:mt-0.5 xl:mt-0 xl:w-6 xl:h-6"  />
             </div>
-            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer h-9 xl:h-full border border-[#E9E9E9]">
-              <p className="text-[#797979] text-sm xl:text-base">Filter</p>
-              <Image src={Filter} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
+            <div className="bg-[#F4F4F4] p-1 md:p-2 rounded flex gap-2 cursor-pointer h-7 md:h-9 xl:h-full border border-[#E9E9E9]">
+              <p className="text-[#797979] text-xs md:text-sm xl:text-base">Filter</p>
+              <Image src={Filter} alt="" className="w-4 h-4 md:mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
             </div>
-            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer h-9 xl:h-full border border-[#E9E9E9]">
-              <p className="text-[#797979] text-sm xl:text-base">Share</p>
-              <Image src={Share} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6"  />
+            <div className="bg-[#F4F4F4] p-1 md:p-2 rounded flex gap-2 cursor-pointer h-7 md:h-9 xl:h-full border border-[#E9E9E9]">
+              <p className="text-[#797979] text-xs md:text-sm xl:text-base">Share</p>
+              <Image src={Share} alt="" className="w-4 h-4 md:mt-0.5 xl:mt-0 xl:w-6 xl:h-6"  />
             </div>
 
-            <div className=" rounded flex gap-2 cursor-pointer  bg-gradient-to-b from-[#4C38C2] to-[#2F2188] p-2 h-9 xl:h-full">
+            <div className=" rounded flex justify-center items-center gap-2 cursor-pointer  bg-gradient-to-b from-[#4C38C2] to-[#2F2188] p-2 h-7 md:h-9 xl:h-full">
               <p className="text-[#FFFFFF] hidden lg:block lg:text-sm xl:text-base">Create New</p>
-              <Image src={Add} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
+              <Image src={Add} alt="" className="w-4 h-4 md:mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
             </div>
           </div>
         </div>
@@ -261,10 +261,10 @@ export default function Dashboard() {
               columns.map((column) => (
                 <div key={column.id} className="flex flex-col gap-4 w-full">
                   <div className="flex justify-between w-full">
-                    <p className="text-[#252525] font-semibold">
+                    <p className="text-[#252525] text-sm md:text-base font-semibold">
                       {column.title}
                     </p>
-                    <Image src={Task} alt="" width={24} height={24} />
+                    <Image src={Task} alt="" className="w-4 h-4 md:w-6 md:h-6" />
                   </div>
                   <Droppable droppableId={column.id}>
                     {(provided) => (
@@ -306,8 +306,8 @@ export default function Dashboard() {
                     className="bg-gradient-to-b from-[#3A3A3A] to-[#202020] p-2 rounded-lg flex justify-between cursor-pointer"
                     onClick={() => setTaskPopup(true)}
                   >
-                    <p className="text-[#E3E1E1]">Add New</p>
-                    <Image src={addNew} alt="" />
+                    <p className="text-[#E3E1E1] text-sm md:text-base">Add New</p>
+                    <Image src={addNew} alt="" className="w-4 h-4 md:w-5 md:h-5 mt-0.5 md:mt-0" />
                   </div>
                 </div>
               ))
