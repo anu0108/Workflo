@@ -176,13 +176,13 @@ export default function Dashboard() {
           <div className="flex items-center gap-2 cursor-pointer">
             {" "}
             <p className={`text-[#080808]`}>Help & Feedback</p>{" "}
-            <Image src={Question} alt="" />
+            <Image src={Question} alt=""  />
           </div>
         </div>
 
-        <div className="flex gap-3 mt-4">
-          <div className="bg-[#FFFFFF] flex gap-2 items-center p-4 rounded">
-            <Image src={Tags} alt="" />
+        <div className="flex gap-2 xl:gap-3 mt-4">
+          <div className="bg-[#FFFFFF] flex gap-2 items-center p-2 xl:p-4 rounded">
+            <Image src={Tags} alt="" className="w-12 h-16 xl:w-16"/>
             <div>
               <p className="text-[#757575] font-semibold">Introducing Tags</p>
               <p className="text-[#868686] text-xs">
@@ -191,8 +191,8 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-          <div className="bg-[#FFFFFF] flex gap-2 items-center p-4 rounded">
-            <Image src={Link} alt="" />
+          <div className="bg-[#FFFFFF] flex gap-2 items-center p-2 xl:p-4 rounded">
+            <Image src={Link} alt="" className="w-12 h-16 xl:w-16" />
             <div>
               <p className="text-[#757575] font-semibold">
                 Share Notes Instantly
@@ -203,8 +203,8 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-          <div className="bg-[#FFFFFF] flex gap-2 items-center p-4 rounded">
-            <Image src={Access} alt="" />
+          <div className="bg-[#FFFFFF] flex gap-2 items-center p-2 xl:p-4 rounded">
+            <Image src={Access} alt="" className="w-12 h-16 xl:w-16" />
             <div>
               <p className="text-[#757575] font-semibold">Access Anywhere</p>
               <p className="text-[#868686] text-xs">
@@ -220,32 +220,32 @@ export default function Dashboard() {
             <input
               type="text"
               placeholder="Search"
-              className="bg-[#FFFFFF] border border-[#E9E9E9] p-2 rounded-lg flex justify-between focus:border-[#999999] outline-none w-40"
+              className="bg-[#FFFFFF] border border-[#E9E9E9] p-2 rounded-lg flex justify-between focus:border-[#999999] text-sm xl:text-base outline-none w-36 xl:w-40"
             />
-            <Image src={Search} className="absolute top-3 left-28" alt="" />
+            <Image src={Search} className="absolute top-2 left-28 xl:left-32 w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" alt="" />
           </div>
 
-          <div className="flex gap-4">
-            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer">
-              <p className="text-[#797979]">Calendar view</p>
-              <Image src={Calendar} alt="" />
+          <div className="flex gap-2 xl:gap-4 pt-0.5">
+            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer h-9 xl:h-full border border-[#E9E9E9]">
+              <p className="text-[#797979] text-sm xl:text-base">Calendar view</p>
+              <Image src={Calendar} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
             </div>
-            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer">
-              <p className="text-[#797979]">Automation</p>
-              <Image src={Automation} alt="" />
+            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer h-9 xl:h-full border border-[#E9E9E9]">
+              <p className="text-[#797979] text-sm xl:text-base">Automation</p>
+              <Image src={Automation} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6"  />
             </div>
-            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer">
-              <p className="text-[#797979]">Filter</p>
-              <Image src={Filter} alt="" />
+            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer h-9 xl:h-full border border-[#E9E9E9]">
+              <p className="text-[#797979] text-sm xl:text-base">Filter</p>
+              <Image src={Filter} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
             </div>
-            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer">
-              <p className="text-[#797979]">Share</p>
-              <Image src={Share} alt="" />
+            <div className="bg-[#F4F4F4] p-2 rounded flex gap-2 cursor-pointer h-9 xl:h-full border border-[#E9E9E9]">
+              <p className="text-[#797979] text-sm xl:text-base">Share</p>
+              <Image src={Share} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6"  />
             </div>
 
-            <div className=" p-2 rounded flex gap-2 cursor-pointer  bg-gradient-to-b from-[#4C38C2] to-[#2F2188]">
-              <p className="text-[#FFFFFF]">Create New</p>
-              <Image src={Add} alt="" />
+            <div className=" rounded flex gap-2 cursor-pointer  bg-gradient-to-b from-[#4C38C2] to-[#2F2188] p-2 h-9 xl:h-full">
+              <p className="text-[#FFFFFF] hidden lg:block lg:text-sm xl:text-base">Create New</p>
+              <Image src={Add} alt="" className="w-4 h-4 mt-0.5 xl:mt-0 xl:w-6 xl:h-6" />
             </div>
           </div>
         </div>

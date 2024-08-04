@@ -8,10 +8,46 @@ import priority from "../../public/images/priority.svg";
 import deadline from "../../public/images/deadline.svg";
 import description from "../../public/images/description.svg";
 import add from "../../public/images/add-custom-prop-modal.svg";
-export default function TaskModal({ onClose }: any) {
+import { useEffect, useRef, useState } from "react";
+interface TaskModalProps {
+  onClose: () => void;
+}
+
+export default function TaskModal({ onClose }: TaskModalProps) {
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const dropdownStatusRef = useRef<HTMLDivElement | null>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState("Not Selected");
+
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node))
+        onClose();
+
+      if (
+        dropdownStatusRef.current &&
+        !dropdownStatusRef.current.contains(event.target as Node)
+      )
+       setIsDropdownOpen(false)
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose, isDropdownOpen]);
+
+
+  const handleStatusChange = (status: string) => {
+    setSelectedStatus(status);
+    setIsDropdownOpen(false);
+  };
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white w-2/6 h-5/6 rounded-lg p-4">
+      <div className="bg-white w-2/6 h-5/6 rounded-lg p-4" ref={modalRef}>
         <div className="flex justify-between">
           <div className="flex gap-3">
             <Image
@@ -43,59 +79,82 @@ export default function TaskModal({ onClose }: any) {
             className="text-2xl font-semibold mb-4 text-gray-600 placeholder-gray-400 focus:outline-none"
           />
 
-          <div className="flex justify-between mt-5 w-5/6">
+          <div className="flex justify-between mt-5 w-3/5">
             <div className="flex gap-2">
-            <Image src={status} alt="" width={18} height={18} />
-            <p className="text-[#666666] text-sm">Status</p>
+              <Image src={status} alt="" width={18} height={18} />
+              <p className="text-[#666666] text-sm">Status</p>
             </div>
-            <input
-            type="text"
-            placeholder="Not Selected"
-            className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
-          />
+            <div className="relative">
+              <button
+                onClick={toggleDropdown}
+                className="text-[#C1BDBD] text-sm focus:outline-none"
+              >
+                {selectedStatus}
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute bg-white border border-gray-300 rounded mt-2 w-full" ref={dropdownStatusRef}>
+                  {["To-Do", "In Progress", "Completed"].map((status) => (
+                    <button
+                      key={status}
+                      onClick={() => handleStatusChange(status)}
+                      className="w-full text-left border border-gray-100 px-1 py-2 text-xs text-[#666666] hover:bg-gray-100"
+                    >
+                      {status}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            {/* <input
+              type="text"
+              placeholder="Not Selected"
+              className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
+            /> */}
             {/* <p className="text-[#C1BDBD] text-sm">Not Selected</p> */}
           </div>
           <div className="flex justify-between mt-10 w-5/6">
             <div className="flex gap-2">
-            <Image src={priority} alt="" width={18} height={18} />
-            <p className="text-[#666666] text-sm">Priority</p>
+              <Image src={priority} alt="" width={18} height={18} />
+              <p className="text-[#666666] text-sm">Priority</p>
             </div>
             <input
-            type="text"
-            placeholder="Not Selected"
-            className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
-          />
+              type="text"
+              placeholder="Not Selected"
+              className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
+            />
           </div>
           <div className="flex justify-between  mt-10 w-5/6">
             <div className="flex gap-2">
-            <Image src={deadline} alt="" width={18} height={18} />
-            <p className="text-[#666666] text-sm">Deadline</p>
+              <Image src={deadline} alt="" width={18} height={18} />
+              <p className="text-[#666666] text-sm">Deadline</p>
             </div>
             <input
-            type="text"
-            placeholder="Not Selected"
-            className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
-          />
+              type="text"
+              placeholder="Not Selected"
+              className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
+            />
           </div>
           <div className="flex justify-between  mt-10 w-5/6">
             <div className="flex gap-2">
-            <Image src={description} alt="" width={18} height={18} />
-            <p className="text-[#666666] text-sm">Description</p>
+              <Image src={description} alt="" width={18} height={18} />
+              <p className="text-[#666666] text-sm">Description</p>
             </div>
             <input
-            type="text"
-            placeholder="Not Selected"
-            className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
-          />
+              type="text"
+              placeholder="Not Selected"
+              className=" placeholder-[#C1BDBD] text-sm  focus:outline-none"
+            />
           </div>
           <div className="flex mt-10 gap-6 cursor-pointer">
-            <Image src={add} alt=" "  width={18} height={18} />
+            <Image src={add} alt=" " width={18} height={18} />
             <p className="text-sm">Add Custom Property</p>
           </div>
 
-          <hr className="text-[#DEDEDE] mt-10"/>
+          <hr className="text-[#DEDEDE] mt-10" />
 
-          <p className="text-[#C0BDBD] text-xs p-2">Start writing, or drag your own files here</p>
+          <p className="text-[#C0BDBD] text-xs p-2">
+            Start writing, or drag your own files here
+          </p>
         </div>
       </div>
     </div>
