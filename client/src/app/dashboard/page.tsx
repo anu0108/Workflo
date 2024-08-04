@@ -13,6 +13,7 @@ import Filter from "../../../public/images/filter.svg";
 import Share from "../../../public/images/share.svg";
 import Task from "../../../public/images/task.svg";
 import addNew from "../../../public/images/add-new.svg";
+import DP from "../../../public/images/dp.webp";
 import { useEffect, useState } from "react";
 import {
   DragDropContext,
@@ -166,17 +167,18 @@ export default function Dashboard() {
   return (
     <div className="flex h-screen">
       <Sidebar setTaskPopup={setTaskPopup} />
-      <div className="bg-[#F7F7F7] w-full p-4">
+      <div className="bg-[#F7F7F7] w-full p-4 overflow-auto">
         <div className="flex justify-between">
           <p
-            className={`text-[#080808] font-semibold text-4xl ${barlow.className}`}
+            className={`text-[#080808] font-semibold text-2xl md:text-4xl ${barlow.className}`}
           >
             Good morning, Joe!
           </p>
           <div className="flex items-center gap-2 cursor-pointer">
             {" "}
-            <p className={`text-[#080808]`}>Help & Feedback</p>{" "}
-            <Image src={Question} alt=""  />
+            <p className={`text-[#080808] hidden md:flex md:text-base`}>Help & Feedback</p>{" "}
+            <Image src={Question} alt="" className="hidden md:flex md:text-base w-6 md:h-6"  />
+            <Image src={DP} alt="" width={40} height={40} className="md:hidden" />
           </div>
         </div>
 

@@ -36,11 +36,11 @@ export default function Sidebar({setTaskPopup}:any) {
   }
 
   return (
-    <div className="w-32 lg:w-72 xl:w-80 bg-[#FFFFFF] p-4 flex flex-col justify-between">
+    <div className="hidden w-28 lg:w-72 xl:w-80 bg-[#FFFFFF] p-4 md:flex flex-col justify-between">
       <div>
         <div className="flex flex-col lg:flex-row items-center font-medium gap-3 ">
           <Image src={DP} alt="" width={40} height={40} />
-          <p className="text-[#080808] text-sm lg:text-lg text-center w-16 lg:w-full">Joe Gardner</p>
+          <p className="text-[#080808] text-sm lg:text-lg text-center lg:text-left w-16 lg:w-full">Joe Gardner</p>
         </div>
         <div className="flex items-center mt-4 gap-4 lg:justify-between">
           <div className="flex gap-4">
@@ -127,9 +127,9 @@ export default function Sidebar({setTaskPopup}:any) {
             <p className="text-[#797979] text-sm lg:text-base">Analytics</p>
           </div>
         </div>
-        <button className="mt-4 cursor-pointer p-0.5 lg:p-2 xl:p-4 rounded-lg flex flex-col mx-auto lg:flex-row items-center justify-center lg:gap-3 bg-gradient-to-b from-[#4C38C2] to-[#2F2188] w-16 lg:w-full" onClick={handlePopupOpen}>
+        <button className="mt-4 cursor-pointer p-0.5 lg:p-2 xl:p-4 rounded-lg flex flex-col mx-auto lg:flex-row items-center justify-center gap-1 lg:gap-3 bg-gradient-to-b from-[#4C38C2] to-[#2F2188] w-16 lg:w-full" onClick={handlePopupOpen}>
           <p className="text-[#FFFFFF] text-sm lg:text-base hidden lg:block">Create new task</p>
-          <p className="text-[#FFFFFF] text-sm lg:text-base lg:hidden">New</p>
+          <p className="text-[#FFFFFF] text-sm lg:text-base lg:hidden">New Task</p>
           <Image src={Add} alt="" className="w-5 h-5 lg:w-6 lg:h-6" />
         </button>
       </div>

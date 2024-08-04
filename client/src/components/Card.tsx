@@ -28,7 +28,7 @@ export default function Card({ task  }: CardProps) {
     }
   };
   return(
-  <div className="p-3 rounded-lg border border-[#DEDEDE] flex flex-col">
+  <div className="p-2 md:p-3 rounded-lg border border-[#DEDEDE] flex flex-col">
     <p className="font-semibold text-[#606060]">
     {task.title}
     </p>
